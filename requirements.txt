@@ -1,0 +1,7 @@
+flask
+SQLAlchemy
+psycopg2-binary
+celery
+redis
+flask-mail
+python-dotenv

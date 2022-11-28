@@ -1,0 +1,86 @@
+# примеры API-запросов
+
+@baseUrl = http://localhost:5000/api/v1
+
+# создание нового пользователя
+POST {{baseUrl}}/user/
+Content-Type: application/json
+
+{
+  "name": "admin1",
+  "password": "1234",
+  "email": "username@domen.com"
+}
+
+###
+
+# получение токена
+PATCH {{baseUrl}}/user/1/
+Content-Type: application/json
+
+{
+  "name": "admin1",
+  "password": "1234"
+}
+
+###
+
+# создание нового объявления
+POST {{baseUrl}}/adv/
+Content-Type: application/json
+Authorization: token_user_1
+
+{
+  "header": "Buy house",
+  "description": "House description"
+}
+
+###
+
+# получение всех объявлений
+GET {{baseUrl}}/adv/
+Content-Type: application/json
+
+###
+
+# получение объявления по id
+GET {{baseUrl}}/adv/3
+Content-Type: application/json
+
+###
+
+# изменение объявления
+PATCH {{baseUrl}}/adv/3
+Content-Type: application/json
+Authorization: token_user_2
+
+{
+  "header": "Buy elephant",
+  "description": "Elephant description"
+}
+
+###
+
+# удаление объявления по id
+DELETE {{baseUrl}}/adv/1
+Content-Type: application/json
+Authorization: token_user_1
+
+###
+
+# создание задачи на отправку email
+POST {{baseUrl}}/mail/
+Content-Type: application/json
+
+###
+
+# создание задачи на отправку email c параметром
+# минимального количества созданых объявлений
+POST {{baseUrl}}/mail/?min_adv=4
+Content-Type: application/json
+
+###
+
+# получение статуса задачи по id
+GET {{baseUrl}}/mail/?task_id=03a8f4bd-dc0e-459a-9032-87efe13d113a
+Content-Type: application/json
